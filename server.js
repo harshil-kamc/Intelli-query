@@ -40,7 +40,7 @@ loadEnvFile(path.join(__dirname, '.env'));
 
 const PORT = process.env.PORT || 3000;
 const DATA_DIR = path.join(__dirname, 'data');
-let geminiApiKey = process.env.GEMINI_API_KEY || 'PASTE_GEMINI_API_KEY_HERE';
+let geminiApiKey = process.env.GEMINI_API_KEY || '';
 let adminDemoMode = /^(true|1|yes|on)$/i.test(process.env.DEMO_MODE || 'false');
 const GEMINI_MODEL = 'models/gemini-2.5-flash';
 const MAX_ROWS = 5000;
