@@ -5481,7 +5481,10 @@ process.on('unhandledRejection', reason => {
   console.error('[unhandledRejection]', reason);
 });
 
-initSqlJs()
+initSqlJs({
+  locateFile: (file) =>
+    path.join(__dirname, 'node_modules', 'sql.js', 'dist', file)
+})
   .then(SQL => {
     SQL_MODULE = SQL;
     migrateLegacyPublicTempDatasets();
