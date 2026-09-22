@@ -5486,9 +5486,13 @@ initSqlJs({
     path.join(__dirname, 'node_modules', 'sql.js', 'dist', file)
 })
   .then(SQL => {
-    SQL_MODULE = SQL;
+  SQL_MODULE = SQL;
+
+  if (process.env.VERCEL !== '1') {
     migrateLegacyPublicTempDatasets();
-    server.listen(PORT, () => {
+  }
+
+  server.listen(PORT, () => {
       console.log(`Compact BI demo running at http://localhost:${PORT}`);
       console.log(`Drop dataset files into: ${DATA_DIR}`);
     });
